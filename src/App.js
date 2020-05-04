@@ -1,7 +1,10 @@
 import React, { Component, useState, useEffect } from "react";
 import "./App.css";
+import Articles from "./Articles"
+
 
 function App() {
+
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -12,10 +15,13 @@ function App() {
 	}, []);
 
 	return (
+		<>
 		<div className='App'>
 			{data != "" && <header className='App-header'>{data[0].title}</header>}
 			{console.log(data)}
 		</div>
+		<Articles />
+		</>
 	);
 }
 
