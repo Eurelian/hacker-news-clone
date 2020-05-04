@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -12,8 +12,14 @@ function App() {
 	}, []);
 
 	return (
-		<div className='App'>
-			{data != "" && <header className='App-header'>{data[0].title}</header>}
+		<div>
+			{data !== "" &&
+				data.map((data) => (
+					<p key={Math.random()} className='App-header'>
+						{data.story_title === null ? data.title : data.story_title}
+					</p>
+				))}
+
 			{console.log(data)}
 		</div>
 	);
