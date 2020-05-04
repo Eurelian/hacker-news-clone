@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Articles from "./Articles";
 
 function App() {
 	const [data, setData] = useState([]);
@@ -12,16 +13,19 @@ function App() {
 	}, []);
 
 	return (
-		<div>
-			{data !== "" &&
-				data.map((data) => (
-					<p key={Math.random()} className='App-header'>
-						{data.story_title === null ? data.title : data.story_title}
-					</p>
-				))}
+		<>
+			<div>
+				{data !== "" &&
+					data.map((data) => (
+						<p key={Math.random()} className='App-header'>
+							{data.story_title === null ? data.title : data.story_title}
+						</p>
+					))}
 
-			{console.log(data)}
-		</div>
+				{console.log(data)}
+			</div>
+			<Articles />
+		</>
 	);
 }
 
