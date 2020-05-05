@@ -4,10 +4,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import Articles from "./Articles";
 import PageHandler from "./components/pagination";
 import { paginate } from "./utils/paginate";
+import Navbar from "./components/Navbar";
 
 function App() {
 	const [data, setData] = useState([]);
-	const [pageSize, setPageSize] = useState(5);
+	const [pageSize, setPageSize] = useState(6);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
@@ -23,49 +24,29 @@ function App() {
 	};
 
 	const items = paginate(data, pageSize, currentPage);
+
 	return (
 		<>
-			<div className='App'>
-				{data != "" && <header className='App-header'>{data[0].title}</header>}
-				{console.log(data)}
-			</div>
-			<div className="grid_container">
-				<div className="article_grid">
-				{ [...data].map( article => {
-          return (
-            <Articles 
-				title={article.story_title} 
-				key={article.story_id} 
-					url={article.url} 
-					author={article.author} 
-					date={article.created_at}
-					tags={article.comment_text}
-					/>
-            )
-          }
-        )
-      }
-					<Articles />
-				</div>
-			</div>	
-
-			<div>
+			<Navbar />
+			<div className='article_grid'>
 				{data !== "" &&
 					items.map((data) => (
-						<p key={Math.random()} className='App-header'>
-							{data.story_title === null ? data.title : data.story_title}
-						</p>
+						<div className='articles'>
+							<h4>{data.author}</h4>
+							<p>{data.created_at.substring(0, 10)}</p>
+							<h3>{data.story_title}</h3>
+							<h5>{data.story_url}</h5>
+							<p>{[...data._tags]}</p>
+						</div>
 					))}
-				<PageHandler
-					itemsCount={data.length}
-					pageSize={pageSize}
-					onPageChange={handlePageChange}
-					currentPage={currentPage}
-				/>
-
-				{console.log(data)}
 			</div>
-			<Articles />
+			<PageHandler
+				style={{ position: "relative" }}
+				itemsCount={data.length}
+				pageSize={pageSize}
+				onPageChange={handlePageChange}
+				currentPage={currentPage}
+			/>
 		</>
 	);
 }
