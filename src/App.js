@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import "./App.css";
 import Articles from "./Articles"
+import article from "./Article"
 
 
 function App() {
@@ -27,16 +28,15 @@ function App() {
             <Articles 
 				title={article.story_title} 
 				key={article.story_id} 
-					url={article.url} 
-					author={article.author} 
-					date={article.created_at}
-					tags={article.comment_text}
-					/>
-            )
-          }
-        )
-      }
-					<Articles />
+				url={article.url} 
+				author={article.author} 
+				date={article.created_at}
+				tags={article.comment_text}
+				/>
+           		)}
+        		)
+      			}
+			<Articles />
 				</div>
 			</div>	
 		</>
