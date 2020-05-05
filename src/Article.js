@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Article(props) {
+    let articledate = props.date
+    if (articledate !== undefined) {articledate = articledate.substring(0,10)}
+    else {}
     
 	return (
 
