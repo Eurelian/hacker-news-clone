@@ -28,19 +28,39 @@
   color: #61dafb;
 }
 
-.article_container {
+.grid_container {
+  width: 98vw;
+  padding: 0px 100px;
   background-color: black;
-  /* width: 90vw !important; */
+}
+
+.article_grid {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+  justify-content: space-evenly;
   height: 90vh;
-  padding: 50px;
 }
 
 .articles{
+  max-width: 600px;
+
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-start;
   background-color: red;
   color: white;
+  padding: 50px;
+  text-align: start;
+}
+
+.articles p{
+  overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
 }
 
 @keyframes App-logo-spin {
