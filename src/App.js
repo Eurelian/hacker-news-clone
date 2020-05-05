@@ -1,11 +1,14 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import Articles from "./Articles"
-
+import "bootstrap/dist/css/bootstrap.css";
+import Articles from "./Articles";
+import PageHandler from "./components/pagination";
+import { paginate } from "./utils/paginate";
 
 function App() {
-
 	const [data, setData] = useState([]);
+	const [pageSize, setPageSize] = useState(5);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		const axios = require("axios").default;
@@ -14,13 +17,31 @@ function App() {
 			.then((res) => setData(res.data.hits));
 	}, []);
 
+	const handlePageChange = (page) => {
+		setCurrentPage(page);
+		console.log(page);
+	};
+
+	const items = paginate(data, pageSize, currentPage);
 	return (
 		<>
-		<div className='App'>
-			{data != "" && <header className='App-header'>{data[0].title}</header>}
-			{console.log(data)}
-		</div>
-		<Articles />
+			<div>
+				{data !== "" &&
+					items.map((data) => (
+						<p key={Math.random()} className='App-header'>
+							{data.story_title === null ? data.title : data.story_title}
+						</p>
+					))}
+				<PageHandler
+					itemsCount={data.length}
+					pageSize={pageSize}
+					onPageChange={handlePageChange}
+					currentPage={currentPage}
+				/>
+
+				{console.log(data)}
+			</div>
+			<Articles />
 		</>
 	);
 }
