@@ -46,7 +46,7 @@ function App() {
 							<br />
 							<h4>By: {data.author}</h4>
 							<p>Date: {data.created_at.substring(0, 10)}</p>
-							<h5>{data.story_url}</h5>
+							<a href={data.story_url}><h5>{data.story_url}</h5></a>
 							<p>TAGS: {[...data._tags]}</p>
 						</div>
 					))}
