@@ -42,11 +42,12 @@ function App() {
 				{data !== "" &&
 					items.map((data) => (
 						<div className='articles'>
-							<h4>{data.author}</h4>
-							<p>{data.created_at.substring(0, 10)}</p>
 							<h3>{data.story_title}</h3>
+							<br />
+							<h4>By: {data.author}</h4>
+							<p>Date: {data.created_at.substring(0, 10)}</p>
 							<h5>{data.story_url}</h5>
-							<p>{[...data._tags]}</p>
+							<p>TAGS: {[...data._tags]}</p>
 						</div>
 					))}
 			</div>

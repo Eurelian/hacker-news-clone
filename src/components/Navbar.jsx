@@ -1,9 +1,10 @@
 import React from "react";
+import "../App.css";
 
 const NavBar = (props) => {
 	return (
-		<nav className='navbar navbar-light bg-light'>
-			<span className='navbar-brand mb-0 h1'>Navbar</span>
+		<nav className='navbar navbar-dark navstyle App-header'>
+			<span className='navbar-brand mb-0 h1'>Hacker News: THE CL0NE</span>
 
 			<form className='form-inline my-2 my-lg-0' onSubmit={(e)=>props.onFormHandle(e)}>
 				<input 
