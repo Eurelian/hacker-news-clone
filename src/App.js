@@ -4,27 +4,29 @@ import "bootstrap/dist/css/bootstrap.css";
 import PageHandler from "./components/pagination";
 import { paginate } from "./utils/paginate";
 import Navbar from "./components/Navbar";
+import axios from "axios";
 
 function App() {
 	const [data, setData] = useState([]);
 	const [pageSize, setPageSize] = useState(6);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [search, setSearch] = useState ("react");
+	const [search, setSearch] = useState("react");
 
-	const handleForm = (e) =>  {
-								setSearch(e.target.children[0].value);
-								e.preventDefault()
-							}
-	
+	const handleForm = (e) => {
+		e.preventDefault();
+		const value = e.target.children[0].value;
+		setSearch(value);
+	};
 
-	useEffect((search) => {
-		console.log(search)
-
-		const axios = require("axios").default;
-		axios
-			.get(`http://hn.algolia.com/api/v1/search_by_date?query=${search}`)
-			.then((res) => setData(res.data.hits))		
-	},[]);
+	useEffect(() => {
+		const fetchData = async () => {
+			const result = await axios
+				.get(`http://hn.algolia.com/api/v1/search_by_date?query=${search}`)
+				.then((res) => res.data.hits);
+			setData(result);
+		};
+		fetchData();
+	}, [search]);
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
@@ -35,7 +37,7 @@ function App() {
 
 	return (
 		<>
-			<Navbar onFormHandle={handleForm}/>
+			<Navbar onFormHandle={handleForm} />
 			<div className='article_grid'>
 				{data !== "" &&
 					items.map((data) => (
