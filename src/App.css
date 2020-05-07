@@ -58,6 +58,7 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 1; /* number of lines to show */
 	-webkit-box-orient: vertical;
+	text-decoration: none !important;
 }
 
 .pagination {
