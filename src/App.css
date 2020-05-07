@@ -1,23 +1,8 @@
-.App {
-	text-align: center;
-}
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
 .App-header {
 	background-color: #282c34;
 	min-height: 10vh;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
@@ -28,31 +13,28 @@
 	color: #61dafb;
 }
 
-.grid_container {
-	width: 98vw;
-	padding: 0px 100px;
-	background-color: black;
-}
-
 .article_grid {
 	text-align: center;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-auto-flow: row;
 	justify-content: space-evenly;
-	height: 90vh;
+	height: 80vh;
 }
 
 .articles {
 	max-width: 600px;
-
+	max-height:500px;
+	background-color: silver;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	background-color: red;
-	color: white;
-	padding: 50px;
+	justify-content: center;
+	color: black;
+	padding: 0 50px;
+	margin: 50px;
 	text-align: start;
+	border: 10px solid silver;
+	border-radius: 50px;
 }
 
 .articles p {
@@ -62,17 +44,45 @@
 	-webkit-line-clamp: 2; /* number of lines to show */
 	-webkit-box-orient: vertical;
 }
+.articles h3 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
 
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+.articles h5 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-box-orient: vertical;
 }
 
 .pagination {
 	justify-content: center;
 	align-self: flex-end;
+}
+
+.navstyle {
+	background-color: #282c34 ;
+}
+
+.btn-outline-success {
+    color: #f8f9fa !important;
+	border-color: #f8f9fa !important;
+}
+
+.btn-outline-success:hover {
+    color: #fff !important;
+    background-color: #f8f9fa !important;
+	border-color: #f8f9fa !important;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: grey !important;
+    border-color: grey !important;
 }
